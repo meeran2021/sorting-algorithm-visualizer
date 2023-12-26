@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sorting Algorithm Visualizer</title>
 
-    <!-- <link rel="stylesheet" href="./css/style.css"> -->
     <link rel="stylesheet" href="./css/style.css">
 
 </head>
@@ -19,13 +18,11 @@
             <input class="input-function-button", id="input-array-size" type="range" min=20 max=150 step=1 value=80>
         </div>
         
-        <span class="Button-array-generate1"><button id="button-array-generate">Generate New Array!</button></span>
+        <span class="Button-array-generate"><button id="button-array-generate">Generate New Array!</button></span>
         
-        <!-- <br> -->
         <div id="algo-speed">
             <span class="input-function-texts", id="text-algo-speed"><strong>Algorithm Speed:</strong></span>
             <input class="input-function-button", id="input-algo-speed" type="range" min=1 max=5 step=1 value=4>
-            <!-- <br> -->
         </div>
 
     </div>
@@ -37,7 +34,7 @@
             <button class="Algo-button">Insertion</button>
             <button class="Algo-button">Merge</button>
             <button class="Algo-button">Quick</button>
-            <button class="Algo-button">Heap</button>  <!--style="margin-right: 0px;"-->
+            <button class="Algo-button">Heap</button>
         </div>
     </div>
     
@@ -69,10 +66,10 @@
 
     </footer>
     
-    <!-- This should be at the end of body and should be loaded before sorts.js -->
+    <!-- load before sorts.js -->
     <script src="./scripts/main.js"></script>   
 
-    <!-- This should be loaded after main.js -->
+    <!-- load after main.js -->
     <script src="./scripts/visualizations.js"></script>  
     
     <script src="./scripts/bubble_sort.js"></script>
