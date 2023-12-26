@@ -1,50 +1,50 @@
 function Insertion()
 {
     //Setting Time complexities
-    document.getElementById("Time_Worst").innerText="O(N^2)";
-    document.getElementById("Time_Average").innerText="Θ(N^2)";
-    document.getElementById("Time_Best").innerText="Ω(N)";
+    document.getElementById("best-time").innerText= "Best Case: O(N^2)";
+    document.getElementById("average-time").innerText= "Average Case: Θ(N^2)";
+    document.getElementById("worst-time").innerText= "Worst Case: Ω(N)";
 
     //Setting Space complexity
-    document.getElementById("Space_Worst").innerText="O(1)";
+    document.getElementById("best-space").innerText= "Worst Case: O(1)";
 
     c_delay=0;
 
-    for(var j=0;j<array_size;j++)
+    for(var j=0; j<arraySize; j++)
     {
-        div_update(divs[j],div_sizes[j],"yellow");
+        updateBar(bars[j],barSizes[j],"yellow");
 
-        var key= div_sizes[j];
-        var i=j-1;
-        while(i>=0 && div_sizes[i]>key)
+        var key= barSizes[j];
+        var i= j-1;
+        while(i>=0 && barSizes[i]>key)
         {
-            div_update(divs[i],div_sizes[i],"red");
-            div_update(divs[i+1],div_sizes[i+1],"red");
+            updateBar(bars[i], barSizes[i], "red");
+            updateBar(bars[i+1], barSizes[i+1], "red");
 
-            div_sizes[i+1]=div_sizes[i];
+            barSizes[i+1]= barSizes[i];
 
-            div_update(divs[i],div_sizes[i],"red");
-            div_update(divs[i+1],div_sizes[i+1],"red");
+            updateBar(bars[i], barSizes[i], "red");
+            updateBar(bars[i+1], barSizes[i+1], "red");
     
-            div_update(divs[i],div_sizes[i],"blue");
+            updateBar(bars[i], barSizes[i], "blue");
             if(i==(j-1))
             {
-                div_update(divs[i+1],div_sizes[i+1],"yellow");
+                updateBar(bars[i+1], barSizes[i+1], "yellow");
             }
             else
             {
-                div_update(divs[i+1],div_sizes[i+1],"blue");
+                updateBar(bars[i+1], barSizes[i+1], "blue");
             }
-            i-=1;
+            i -= 1;
         }
-        div_sizes[i+1]=key;
+        barSizes[i+1]= key;
 
-        for(var t=0;t<j;t++)
+        for(var t=0; t<j; t++)
         {
-            div_update(divs[t],div_sizes[t],"green");
+            updateBar(bars[t], barSizes[t], "green");
         }
     }
-    div_update(divs[j-1],div_sizes[j-1],"green");
+    updateBar(bars[j-1], barSizes[j-1], "green");
 
     enable_buttons();
 }

@@ -1,78 +1,90 @@
-var inp_as=document.getElementById('a_size'),array_size=inp_as.value;
-var inp_gen=document.getElementById("a_generate");
-var inp_aspeed=document.getElementById("a_speed");
+var inputArraySize= document.getElementById('input-array-size');
+var arraySize= inputArraySize.value;
+var btnGenerateArray= document.getElementById("button-array-generate");
+var inputAlgoSpeed= document.getElementById("input-algo-speed");
 
-var butts_algos=document.querySelectorAll(".algos button");
+var btnAlgoList= document.querySelectorAll(".algorithm-list button");
 
-var div_sizes=[];
-var divs=[];
-var margin_size;
-var cont=document.getElementById("array_container");
-cont.style="flex-direction:row";
+var barSizes= [];
+var bars= [];
+var marginBetweenBars;
+var containerSortingBars= document.getElementById("container-sorting-bars");
+containerSortingBars.style= "flex-direction:row";
 
 
-inp_gen.addEventListener("click",generate_array);
-inp_as.addEventListener("input",update_array_size);
+btnGenerateArray.addEventListener("click", generateArray);
+inputArraySize.addEventListener("input", updateArraySize);
 
-function generate_array()
+function generateArray()
 {
-    cont.innerHTML="";
+    containerSortingBars.innerHTML= "";
 
-    for(var i=0;i<array_size;i++)
+    for(var i= 0; i<arraySize; i++)
     {
-        div_sizes[i]=Math.floor(Math.random() * 0.5*(inp_as.max - inp_as.min) ) + 10;
-        divs[i]=document.createElement("div");
-        cont.appendChild(divs[i]);
-        margin_size=0.1;
-        divs[i].style=" margin:0% " + margin_size + "%; background-color:blue; width:" + (100/array_size-(2*margin_size)) + "%; height:" + (div_sizes[i]) + "%;";
+        barSizes[i]= Math.floor(Math.random() * 0.5 * (inputArraySize.max) ) + 20;
+        bars[i]= document.createElement("div");
+        containerSortingBars.appendChild(bars[i]);
+        marginBetweenBars= 0.1;
+        bars[i].style= " margin:0% " + marginBetweenBars + "%; background-color:blue; width:" + (100/arraySize-(2*marginBetweenBars)) + "%; height:" + (barSizes[i]) + "%;";
     }
 }
 
-function update_array_size()
+function updateArraySize()
 {
-    array_size=inp_as.value;
-    generate_array();
+    arraySize= inputArraySize.value;
+    generateArray();
 }
 
-window.onload=update_array_size();
+window.onload= updateArraySize();
 
-for(var i=0;i<butts_algos.length;i++)
+//Running the appropriate algorithm.
+for(var i=0; i<btnAlgoList.length; i++)
 {
-    butts_algos[i].addEventListener("click",runalgo);
+    btnAlgoList[i].addEventListener("click", run);
 }
 
-function disable_buttons()
+function disableButtons()
 {
-    for(var i=0;i<butts_algos.length;i++)
+    // btnGenerateArray.classList= [];
+    btnGenerateArray.classList.add("Button-locked");
+    inputArraySize.disabled= true;
+    btnGenerateArray.disabled= true;
+    inputAlgoSpeed.disabled= true;
+
+    for(var i=0; i<btnAlgoList.length; i++)
     {
-        butts_algos[i].classList=[];
-        butts_algos[i].classList.add("butt_locked");
+        btnAlgoList[i].classList= [];
+        btnAlgoList[i].classList.add("Button-locked");
 
-        butts_algos[i].disabled=true;
-        inp_as.disabled=true;
-        inp_gen.disabled=true;
-        inp_aspeed.disabled=true;
+        btnAlgoList[i].disabled= true;
     }
 }
 
-function runalgo()
+function run()
 {
-    disable_buttons();
+    disableButtons();
 
-    this.classList.add("butt_selected");
+    this.classList.add("Button-selected");
+    
     switch(this.innerHTML)
     {
-        case "Bubble":Bubble();
-                        break;
-        case "Selection":Selection_sort();
-                        break;
-        case "Insertion":Insertion();
-                        break;
-        case "Merge":Merge();
-                        break;
-        case "Quick":Quick();
-                        break;
-        case "Heap":Heap();
-                        break;
+        case "Bubble":
+            Bubble();
+            break;
+        case "Selection":
+            Selection_sort();
+            break;
+        case "Insertion":
+            Insertion();
+            break;
+        case "Merge":
+            Merge();
+            break;
+        case "Quick":
+            Quick();
+            break;
+        case "Heap":
+            Heap();
+            break;
     }
 }

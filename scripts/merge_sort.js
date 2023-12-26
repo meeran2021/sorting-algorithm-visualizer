@@ -1,67 +1,67 @@
 function Merge()
 {
     //Setting Time complexities
-    document.getElementById("Time_Worst").innerText="O(N log N)";
-    document.getElementById("Time_Average").innerText="Θ(N log N)";
-    document.getElementById("Time_Best").innerText="Ω(N log N)";
+    document.getElementById("best-time").innerText= "Best Case: O(N log N)";
+    document.getElementById("average-time").innerText= "Average Case: Θ(N log N)";
+    document.getElementById("worst-time").innerText= "Worst Case: Ω(N log N)";
 
     //Setting Space complexity
-    document.getElementById("Space_Worst").innerText="O(N)";
+    document.getElementById("best-space").innerText= "Worst Case: O(N)";
 
     c_delay=0;
 
-    merge_partition(0,array_size-1);
+    merge_partition(0, arraySize-1);
 
     enable_buttons();
 }
 
-function merge_sort(start,mid,end)
+function merge_sort(start, mid, end)
 {
-    var p=start,q=mid+1;
+    var p= start, q= mid+1;
 
-    var Arr=[],k=0;
+    var Arr= [], k= 0;
 
-    for(var i=start; i<=end; i++)
+    for(var i= start; i<=end; i++)
     {
         if(p>mid)
         {
-            Arr[k++]=div_sizes[q++];
-            div_update(divs[q-1],div_sizes[q-1],"red");
+            Arr[k++]= barSizes[q++];
+            updateBar(bars[q-1], barSizes[q-1], "red");
         }
         else if(q>end)
         {
-            Arr[k++]=div_sizes[p++];
-            div_update(divs[p-1],div_sizes[p-1],"red");
+            Arr[k++]= barSizes[p++];
+            updateBar(bars[p-1], barSizes[p-1], "red");
         }
-        else if(div_sizes[p]<div_sizes[q])
+        else if(barSizes[p]<barSizes[q])
         {
-            Arr[k++]=div_sizes[p++];
-            div_update(divs[p-1],div_sizes[p-1],"red");
+            Arr[k++]= barSizes[p++];
+            updateBar(bars[p-1], barSizes[p-1], "red");
         }
         else
         {
-            Arr[k++]=div_sizes[q++];
-            div_update(divs[q-1],div_sizes[q-1],"red");
+            Arr[k++]= barSizes[q++];
+            updateBar(bars[q-1], barSizes[q-1], "red");
         }
     }
 
     for(var t=0;t<k;t++)
     {
-        div_sizes[start++]=Arr[t];
-        div_update(divs[start-1],div_sizes[start-1],"green");
+        barSizes[start++]= Arr[t];
+        updateBar(bars[start-1], barSizes[start-1], "green");
     }
 }
 
-function merge_partition(start,end)
+function merge_partition(start, end)
 {
     if(start < end)
     {
-        var mid=Math.floor((start + end) / 2);
-        div_update(divs[mid],div_sizes[mid],"yellow");
+        var mid= Math.floor((start + end) / 2);
+        updateBar(bars[mid], barSizes[mid], "yellow");
 
-        merge_partition(start,mid);
-        merge_partition(mid+1,end);
+        merge_partition(start, mid);
+        merge_partition(mid+1, end);
 
-        merge_sort(start,mid,end);
+        merge_sort(start, mid, end);
     }
 }

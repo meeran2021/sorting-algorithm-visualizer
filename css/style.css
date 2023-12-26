@@ -1,169 +1,183 @@
 * {
-  margin: 0px;
-  padding: 0px;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: large;
-  font-weight: bold;
-  text-transform: uppercase;
+  margin: 0;
+  padding: 0;
 }
 
-nav {
-  background-color: #3b3a3a;
-  color: white;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 30% 60%;
-      grid-template-columns: 30% 60%;
-  -webkit-column-gap: 10%;
-          column-gap: 10%;
-  padding: 0% 5%;
-}
-
-nav .array-inputs {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 60% 40%;
-      grid-template-columns: 60% 40%;
-  place-content: center;
-  padding: 5% 0%;
-}
-
-nav .array-inputs #a_size {
-  padding: 5% 0%;
-}
-
-nav .array-inputs #a_speed {
-  padding: 5% 0%;
-}
-
-nav .array-inputs #a_generate {
-  background-color: transparent;
-  border: none;
-  outline: none;
-  color: white;
-  padding: 5% 0% 0% 0%;
-  padding-left: 0%;
-      text-align-last: left;
+body {
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+  background-color: seashell;
 
 }
 
-nav .array-inputs #a_generate:hover {
-  cursor: pointer;
+#page-heading {
+  /* height: 10%; */
+  text-align: center;
+  padding: .5%;
+  /* margin: .5%; */
+  background-color: sandybrown;
 }
 
-nav .header_right {
-  display: -webkit-box;
-  display: -ms-flexbox;
+
+/* Input Size, Speed, etc area  */
+
+#input-function-area {
+  background-color: sandybrown;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1%
 }
 
-nav .header_right .nav-heading {
+#array-size{
+  margin-left: 20%;
+}
+
+#algo-speed {
+  margin-right: 20%;
+}
+
+.input-function-button {
+  padding-left: 20px;
+  margin-left: 10px;
+}
+
+.input-function-texts {
+  font-size: 18px;
+}
+
+#button-array-generate {
   display: inline-block;
-  font-size: xxx-large;
-  padding: 3% 0%;
+  padding: 8px 16px; 
+  font-size: 14px; 
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border: 2px solid #8B6969; 
+  color: #664444;
+  background-color: seashell;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
-nav .header_right .algos {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (16.66667%)[6];
-      grid-template-columns: repeat(6, 16.66667%);
-  place-content: center;
-  padding: 2% 0%;
+#button-array-generate:hover {
+  background-color: #A0522D; 
+  border-color: #A0522D; 
+  color: #fff; 
 }
 
 
-nav .header_right .algos button {
+/* Algorithm Buttons */
+#outer-algo-list-div {
+  background-color: rgb(230, 142, 66);
+}
+
+.algorithm-list {
+  margin: auto;
+  padding: 10px;
+  width: 40%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* align-content: center; */
+}
+
+.algorithm-list button {
+  display: inline-block;
+  padding: 8px 16px; 
+  font-size: 14px; 
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border: 2px solid #8B6969; 
+  color: #664444;
+  background-color: seashell;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+
+.algorithm-list button:hover {
+  background-color: #A0522D; 
+  border-color: #A0522D; 
+  color: #fff; 
+}
+
+/* .Algo-button:active, */
+.algorithm-list .Button-locked {
   background-color: transparent;
-  border: none;
-  color: white;
-  outline: none;
-  padding: 5% 0%;
-  font-size: x-large;
+  /* border-color: #A0522D;  */
+  /* color: #be0c0c; */
 }
 
-nav .header_right .algos button:hover {
-  background-color: blue;
-  cursor: pointer;
-}
-
-nav .header_right .algos .butt_locked {
+.algorithm-list .Button-locked:hover 
+{
   background-color: transparent;
-  cursor: pointer;
+  cursor: not-allowed;
+  color: #664444;
 }
 
-nav .header_right .algos .butt_locked:hover {
+#button-array-generate.Button-locked
+{
   background-color: transparent;
-  cursor: pointer;
+  cursor: not-allowed;
+  color: #664444;
 }
 
-nav .header_right .algos .butt_selected {
-  background-color: white;
-  color: green;
+.algorithm-list .Button-selected,
+.algorithm-list .Button-selected:hover  {
+  background-color: #664444;
+  color: #fff;
 }
 
-nav .header_right .algos .butt_selected:hover {
-  background-color: white;
-  cursor: pointer;
-}
+/* .algorithm-list .Button-unselected:hover {
+  cursor: not-allowed
+} */
 
-nav .header_right .algos .butt_unselected:hover {
-  background-color: blue;
-  cursor: pointer;
-}
 
-section {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 20% 60% 20%;
-      grid-template-columns: 20% 60% 20%;
-}
 
-section .Complexity_Containers {
-  margin-top: 20%;
-}
-
-section .Complexity_Containers .Pair_Definitions {
-  margin-top: 20%;
-}
-
-section .Complexity_Containers .Pair_Definitions p {
-  display: inline;
-}
-
-section .Complexity_Containers .Pair_Definitions p.Sub_Heading {
-  font-size: medium;
-  text-transform: none;
-}
-
-section #Info_Cont1 {
-  padding: 20% 10%;
-}
-
-section #Info_Cont1 h3 {
-  text-decoration: underline;
-}
-
-section #array_container {
+/* Containor Array Bars */
+#container-sorting-bars{
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   width: 100%;
-  height: 70vh;
+  height: 62vh;
 }
 
-section #Info_Cont2 {
-  padding: 20% 10%;
+
+/* Time and Space Complexity */
+
+#algo-complexity-info {
+  margin: auto;
+  padding: 20px;
+  display: flex;
+  justify-content: space-evenly;
 }
 
-section #Info_Cont2 h3 {
-  text-decoration: underline;
+#time-complexity, #space-complexity{
+  width: 40%;
+  text-align: center;
 }
 
-.hide {
-  display: none;
+#time-complexity-cases {
+  display: flex;
+  justify-content: space-between;
+}
+
+#space-complexity-cases {
+  display: flex;
+  justify-content: center;
+}
+
+.Complexity-type {
+  padding: 5px;
+}
+
+
+#text-time-complexity, #text-space-complexity {
+  font-size: larger;
+  font-weight: bold;
 }

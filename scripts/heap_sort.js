@@ -1,14 +1,14 @@
 function Heap()
 {
     //Setting Time complexities
-    document.getElementById("Time_Worst").innerText="O(N log N)";
-    document.getElementById("Time_Average").innerText="Θ(N log N)";
-    document.getElementById("Time_Best").innerText="Ω(N log N)";
+    document.getElementById("best-time").innerText= "Best Case: O(N log N)";
+    document.getElementById("average-time").innerText= "Average Case: Θ(N log N)";
+    document.getElementById("worst-time").innerText= "Worst Case: Ω(N log N)";
 
     //Setting Space complexity
-    document.getElementById("Space_Worst").innerText="O(1)";
+    document.getElementById("best-space").innerText= "Worst Case: O(1)";
 
-    c_delay=0;
+    c_delay= 0;
 
     heap_sort();
     
@@ -17,75 +17,75 @@ function Heap()
 
 function swap(i,j)
 {
-    div_update(divs[i],div_sizes[i],"red");
-    div_update(divs[j],div_sizes[j],"red");
+    updateBar(bars[i],barSizes[i],"red");
+    updateBar(bars[j],barSizes[j],"red");
 
-    var temp=div_sizes[i];
-    div_sizes[i]=div_sizes[j];
-    div_sizes[j]=temp;
+    var temp= barSizes[i];
+    barSizes[i]= barSizes[j];
+    barSizes[j]= temp;
 
-    div_update(divs[i],div_sizes[i],"red");
-    div_update(divs[j],div_sizes[j],"red");
+    updateBar(bars[i],barSizes[i],"red");
+    updateBar(bars[j],barSizes[j],"red");
 
-    div_update(divs[i],div_sizes[i],"blue");
-    div_update(divs[j],div_sizes[j],"blue");
+    updateBar(bars[i],barSizes[i],"blue");
+    updateBar(bars[j],barSizes[j],"blue");
 }
 
-function max_heapify(n,i)
+function max_heapify(n, i)
 {
-    var largest=i;
-    var l=2*i+1;
-    var r=2*i+2;
+    var largest= i;
+    var l= 2*i+1;
+    var r= 2*i+2;
 
-    if(l<n && div_sizes[l]>div_sizes[largest])
+    if(l<n && barSizes[l]>barSizes[largest])
     {
-        if(largest!=i)
+        if(largest != i)
         {
-            div_update(divs[largest],div_sizes[largest],"blue");
+            updateBar(bars[largest], barSizes[largest], "blue");
         }
 
-        largest=l;
+        largest= l;
 
-        div_update(divs[largest],div_sizes[largest],"red");
+        updateBar(bars[largest], barSizes[largest], "red");
     }
 
-    if(r<n && div_sizes[r]>div_sizes[largest])
+    if(r<n && barSizes[r]>barSizes[largest])
     {
-        if(largest!=i)
+        if(largest != i)
         {
-            div_update(divs[largest],div_sizes[largest],"blue");
+            updateBar(bars[largest], barSizes[largest], "blue");
         }
 
         largest=r;
 
-        div_update(divs[largest],div_sizes[largest],"red");
+        updateBar(bars[largest], barSizes[largest], "red");
     }
 
-    if(largest!=i)
+    if(largest != i)
     {
-        swap(i,largest);
+        swap(i, largest);
 
-        max_heapify(n,largest);
+        max_heapify(n, largest);
     }
 }
 
 function heap_sort()
 {
-    for(var i=Math.floor(array_size/2)-1;i>=0;i--)
+    for(var i= Math.floor(arraySize/2)-1; i>=0; i--)
     {
-        max_heapify(array_size,i);
+        max_heapify(arraySize,i);
     }
 
-    for(var i=array_size-1;i>0;i--)
+    for(var i=arraySize-1;i>0;i--)
     {
         swap(0,i);
-        div_update(divs[i],div_sizes[i],"green");
-        div_update(divs[i],div_sizes[i],"yellow");
+        updateBar(bars[i], barSizes[i], "green");
+        updateBar(bars[i], barSizes[i], "yellow");
 
         max_heapify(i,0);
 
-        div_update(divs[i],div_sizes[i],"blue");
-        div_update(divs[i],div_sizes[i],"green");
+        updateBar(bars[i], barSizes[i], "blue");
+        updateBar(bars[i], barSizes[i], "green");
     }
-    div_update(divs[i],div_sizes[i],"green");
+    updateBar(bars[i], barSizes[i], "green");
 }

@@ -1,61 +1,62 @@
 function Quick()
 {
     //Setting Time complexities
-    document.getElementById("Time_Worst").innerText="O(N^2)";
-    document.getElementById("Time_Average").innerText="Θ(N log N)";
-    document.getElementById("Time_Best").innerText="Ω(N log N)";
+    document.getElementById("best-time").innerText= "Best Case: O(N^2)";
+    document.getElementById("average-time").innerText= "Average Case: Θ(N log N)";
+    document.getElementById("worst-time").innerText= "Worst Case: Ω(N log N)";
 
     //Setting Space complexity
-    document.getElementById("Space_Worst").innerText="O(log N)";
+    document.getElementById("best-space").innerText= "Worst Case: O(log N)";
 
     c_delay=0;
 
-    quick_sort(0,array_size-1);
+    quick_sort(0, arraySize-1);
 
     enable_buttons();
 }
 
-function quick_partition (start, end)
+function quick_partition(start, end)
 {
-    var i = start + 1;
-    var piv = div_sizes[start] ;
-    div_update(divs[start],div_sizes[start],"yellow");
+    var i= start+1;
+    var piv = barSizes[start] ;//make the first element as pivot element.
+    updateBar(bars[start], barSizes[start], "yellow");
 
-        for(var j =start + 1; j <= end ; j++ )
+        for(var j= start + 1; j <= end; j++)
         {
-            if (div_sizes[ j ] < piv)
+            //re-arrange the array by putting elements which are less than pivot on one side and which are greater that on other.
+            if (barSizes[j] < piv)
             {
-                div_update(divs[j],div_sizes[j],"yellow");
+                updateBar(bars[j], barSizes[j], "yellow");
 
-                div_update(divs[i],div_sizes[i],"red");
-                div_update(divs[j],div_sizes[j],"red");
+                updateBar(bars[i], barSizes[i], "red");
+                updateBar(bars[j], barSizes[j], "red");
 
-                var temp=div_sizes[i];
-                div_sizes[i]=div_sizes[j];
-                div_sizes[j]=temp;
+                var temp= barSizes[i];
+                barSizes[i]= barSizes[j];
+                barSizes[j]= temp;
 
-                div_update(divs[i],div_sizes[i],"red");
-                div_update(divs[j],div_sizes[j],"red");
+                updateBar(bars[i], barSizes[i], "red");
+                updateBar(bars[j], barSizes[j], "red");
 
-                div_update(divs[i],div_sizes[i],"blue");
-                div_update(divs[j],div_sizes[j],"blue");
+                updateBar(bars[i], barSizes[i], "blue");
+                updateBar(bars[j], barSizes[j], "blue");
 
                 i += 1;
             }
     }
-    div_update(divs[start],div_sizes[start],"red");
-    div_update(divs[i-1],div_sizes[i-1],"red");
+    updateBar(bars[start], barSizes[start], "red");
+    updateBar(bars[i-1], barSizes[i-1], "red");
     
-    var temp=div_sizes[start];//put the pivot element in its proper place.
-    div_sizes[start]=div_sizes[i-1];
-    div_sizes[i-1]=temp;
+    var temp= barSizes[start];//put the pivot element in its proper place.
+    barSizes[start]= barSizes[i-1];
+    barSizes[i-1]= temp;
 
-    div_update(divs[start],div_sizes[start],"red");
-    div_update(divs[i-1],div_sizes[i-1],"red");
+    updateBar(bars[start], barSizes[start], "red");
+    updateBar(bars[i-1], barSizes[i-1], "red");
 
     for(var t=start;t<=i;t++)
     {
-        div_update(divs[t],div_sizes[t],"green");
+        updateBar(bars[t], barSizes[t], "green");
     }
 
     return i-1;//return the position of the pivot
@@ -65,8 +66,9 @@ function quick_sort (start, end )
 {
     if( start < end )
     {
+        //stores the position of pivot element
         var piv_pos = quick_partition (start, end ) ;     
-        quick_sort (start, piv_pos -1);
-        quick_sort (piv_pos +1, end) ;
+        quick_sort (start, piv_pos -1);//sorts the left side of pivot.
+        quick_sort (piv_pos +1, end) ;//sorts the right side of pivot.
     }
  }

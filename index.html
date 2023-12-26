@@ -4,94 +4,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sorting Visualizer</title>
+    <title>Sorting Algorithm Visualizer</title>
 
+    <!-- <link rel="stylesheet" href="./css/style.css"> -->
     <link rel="stylesheet" href="./css/style.css">
 
 </head>
 <body>
-
-    <header>
-        <nav>
-            <div class="array-inputs">
-                <p>Array Size:</p>
-                <input id="a_size" type="range" min=20 max=150 step=1 value=80>
-                <p>Algorithm Speed:</p>
-                <input id="a_speed" type="range" min=1 max=5 step=1 value=4>
-                <button id="a_generate">Generate New Array!</button>
-            </div>
-
-            <div class="header_right">
-                <p class="nav-heading">Sorting visualizer</p>
-
-                <div class="algos">
-                    <button >Bubble</button>
-                    <button >Selection</button>
-                    <button >Insertion</button>
-                    <button >Merge</button>
-                    <button >Quick</button>
-                    <button style="margin-right: 0px;">Heap</button>
-                </div>
-            </div>
-
-        </nav>
-    </header>
-
-    <section>
-
-        <div id="Info_Cont1">
-
-            <h3>TIME COMPLEXITY</h3>
-
-            <div class="Complexity_Containers" id="Time_Complexity_Types_Container">
-
-                <div class="Pair_Definitions">
-                    <p class="Sub_Heading">Worst case:</p>
-                    <p id="Time_Worst"></p>
-                </div>
-                
-                <div class="Pair_Definitions">
-                    <p class="Sub_Heading">Average case:</p>
-                    <p id="Time_Average"></p>
-                </div>
-                
-                <div class="Pair_Definitions">
-                    <p class="Sub_Heading">Best case:</p>
-                    <p id="Time_Best"></p>
-                </div>
-
-            </div>
-
+    <h1 id="page-heading">Sorting Algorithm Visualizer</h1>
+    
+    <div id="input-function-area">
+        <div id="array-size">
+            <span class="input-function-texts", id= "text-array-size"><strong>Array Size:</strong></span>
+            <input class="input-function-button", id="input-array-size" type="range" min=20 max=150 step=1 value=80>
+        </div>
+        
+        <span class="Button-array-generate1"><button id="button-array-generate">Generate New Array!</button></span>
+        
+        <!-- <br> -->
+        <div id="algo-speed">
+            <span class="input-function-texts", id="text-algo-speed"><strong>Algorithm Speed:</strong></span>
+            <input class="input-function-button", id="input-algo-speed" type="range" min=1 max=5 step=1 value=4>
+            <!-- <br> -->
         </div>
 
-        <div id="array_container">
-            
+    </div>
+
+    <div id="outer-algo-list-div">
+        <div class="algorithm-list">
+            <button class="Algo-button">Bubble</button>
+            <button class="Algo-button">Selection</button>
+            <button class="Algo-button">Insertion</button>
+            <button class="Algo-button">Merge</button>
+            <button class="Algo-button">Quick</button>
+            <button class="Algo-button">Heap</button>  <!--style="margin-right: 0px;"-->
         </div>
+    </div>
+    
+    <div id="container-sorting-bars">
 
-        <div id="Info_Cont2">
-
-            <h3>SPACE COMPLEXITY</h3>
-
-            <div class="Complexity_Containers" id="Space_Complexity_Types_Container">
-
-                <div class="Pair_Definitions">
-                    <p class="Sub_Heading">Worst case:</p>
-                    <p id="Space_Worst"></p>
-                </div>
-                
+    </div>
+    <div id="algo-complexity-info">
+        <div id="time-complexity">
+            <span id="text-time-complexity">Time Complexity</span>
+            <div id="time-complexity-cases">
+                <span class="Complexity-type", id="best-time">Best Case: O(x)</span>
+                <br>
+                <span class="Complexity-type", id="average-time">Average Case: O(x)</span>
+                <br>
+                <span class="Complexity-type", id="worst-time">Worst Case: O(x)</span>
             </div>
-
         </div>
+        <div id="space-complexity">
+            <span id="text-space-complexity">Space Complexity</span>
+            <div id="space-complexity-cases">
+                <span class="Complexity-type" id="best-space">Best Case: O(x)</span>
+            </div>
+        </div>
+    </div>
 
-    </section>
 
+    
     <footer>
 
     </footer>
+    
+    <!-- This should be at the end of body and should be loaded before sorts.js -->
+    <script src="./scripts/main.js"></script>   
 
-    <script src="./scripts/main.js"></script> 
-    <script src="./scripts/visualizations.js"></script>
-
+    <!-- This should be loaded after main.js -->
+    <script src="./scripts/visualizations.js"></script>  
+    
     <script src="./scripts/bubble_sort.js"></script>
     <script src="./scripts/selection_sort.js"></script>
     <script src="./scripts/insertion_sort.js"></script>
