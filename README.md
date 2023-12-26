@@ -4,6 +4,8 @@
 
 Sorting Visualizer is a web application designed to showcase the inner workings of various sorting algorithms. It provides a visual representation of how algorithms like Bubble sort, Selection sort, Insertion sort, Merge sort, Quick sort, and Heap sort operate. The application offers features to enhance the user's understanding of sorting algorithms, including colored representations, control over visualization parameters, and insights into time and space complexities.
 
+**Explore the live version [here](https://meeran2021.github.io/sorting-algorithm-visualizer/).**
+
 ## Implemented Algorithms
 
 1. **Bubble Sort**
@@ -59,5 +61,3 @@ This project is licensed under the [MIT License](LICENSE).
 ## Acknowledgments
 
 Feel free to explore and learn about sorting algorithms through this Sorting Visualizer!
-
-Take a look at live version: https://meeran2021.github.io/sorting-algorithm-visualizer/
